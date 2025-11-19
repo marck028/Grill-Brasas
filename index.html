@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grill Brasas - Restaurante</title>
-    <link rel="icon" type="image/svg+xml" href="img/favicongb.png">
-    <link rel="icon" type="image/png" href="img/favicongb.png">
-    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="icon" type="image/svg+xml" href="img/Logo/favicongb.png">
+    <link rel="icon" type="image/png" href="img/Logo/favicongb.png">
+    <link rel="apple-touch-icon" href="img/Logo/favicongb.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,7 @@
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <img src="img/favicongb.png" alt="Logo Grill Brasas" class="logo-img">
+                <img src="img/Logo/favicongb.png" alt="Logo Grill Brasas" class="logo-img">
                 <h1>GRILL BRASAS</h1>
             </div>
             <ul class="nav-menu">
@@ -35,23 +35,23 @@
 
     <!-- Hero Section con Carrusel -->
     <section id="inicio" class="hero">
-        <div class="carousel-container">
-            <div class="carousel-slide active">
-                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1920&q=80" alt="Plato del restaurante">
+            <div class="carousel-container">
+                <div class="carousel-slide active">
+                    <img src="img/CortesCarne/BabyGrill.JPG" alt="Plato del restaurante">
                 <div class="carousel-overlay">
                     <h2>Bienvenidos a Grill Brasas</h2>
                     <p>Sabores auténticos que despiertan tus sentidos</p>
                 </div>
             </div>
-            <div class="carousel-slide">
-                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1920&q=80" alt="Carnes a la parrilla">
+                <div class="carousel-slide">
+                    <img src="img/CortesCarne/Bife%20chorizo.JPG" alt="Carnes a la parrilla">
                 <div class="carousel-overlay">
                     <h2>Carnes Premium</h2>
                     <p>La mejor calidad en cada bocado</p>
                 </div>
             </div>
-            <div class="carousel-slide">
-                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1920&q=80" alt="Ambiente del restaurante">
+                <div class="carousel-slide">
+                    <img src="img/Promociones/Party%20pinchos.JPG" alt="Ambiente del restaurante">
                 <div class="carousel-overlay">
                     <h2>Ambiente Único</h2>
                     <p>Disfruta de una experiencia inolvidable</p>
@@ -60,9 +60,9 @@
             <button class="carousel-btn prev" onclick="changeSlide(-1)">❮</button>
             <button class="carousel-btn next" onclick="changeSlide(1)">❯</button>
             <div class="carousel-indicators">
-                <span class="indicator active" onclick="currentSlide(1)"></span>
-                <span class="indicator" onclick="currentSlide(2)"></span>
-                <span class="indicator" onclick="currentSlide(3)"></span>
+                <span class="indicator active" onclick="goToSlide(1)"></span>
+                <span class="indicator" onclick="goToSlide(2)"></span>
+                <span class="indicator" onclick="goToSlide(3)"></span>
             </div>
         </div>
     </section>
@@ -76,6 +76,8 @@
                 <button class="category-btn" onclick="filterMenu('carnes')">CARNES</button>
                 <button class="category-btn" onclick="filterMenu('pinchos')">PINCHOS</button>
                 <button class="category-btn" onclick="filterMenu('bebidas')">BEBIDAS</button>
+                <button class="category-btn" onclick="filterMenu('guarniciones')">GUARNICIONES</button>
+                <button class="category-btn" onclick="filterMenu('promociones')">PROMOCIONES</button>
             </div>
 
             <div class="menu-grid">
@@ -86,122 +88,122 @@
                     </div>
                     <div class="menu-item-content">
                         <h3>Baby Grill</h3>
-                        <p>Mezcla de carnes premium a la parrilla con guarniciones</p>
-                        <span class="price">bs. 189</span>
+                        <p>Selección de cortes a la parrilla con chorizo, pollo y vegetales.</p>
+                        <span class="price">Bs. 189</span>
                     </div>
                 </div>
 
                 <div class="menu-item" data-category="carnes">
                     <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1528607929212-2626d642d7e0?w=400&q=80" alt="Ribeye">
+                        <img src="img/CortesCarne/Bife%20chorizo.JPG" alt="Bife de Chorizo">
                     </div>
                     <div class="menu-item-content">
-                        <h3>Ribeye Premium</h3>
-                        <p>Corte premium de res a la parrilla, acompañado de papas</p>
-                        <span class="price">$18.000</span>
+                        <h3>Bife de Chorizo</h3>
+                        <p>Corte jugoso sellado a la brasa con chimichurri de la casa.</p>
+                        <span class="price">Bs. 59</span>
                     </div>
                 </div>
 
-                <div class="menu-item" data-category="carnes">
+                <!-- Pinchos -->
+                <div class="menu-item" data-category="pinchos">
                     <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=400&q=80" alt="Costillas">
+                        <img src="img/Pinchos/Alitas%20P..JPG" alt="Alitas P">
                     </div>
                     <div class="menu-item-content">
-                        <h3>Costillas BBQ</h3>
-                        <p>Costillas de cerdo con salsa barbacoa casera</p>
-                        <span class="price">$22.000</span>
+                        <h3>Alitas P</h3>
+                        <p>Alitas doradas con salsa picante y aderezo de la casa.</p>
+                        <span class="price">Bs. 13</span>
                     </div>
                 </div>
 
-                <!-- Pescados -->
-                <div class="menu-item" data-category="pescados">
+                <div class="menu-item" data-category="pinchos">
                     <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1544943910-04c54e7b47e2?w=400&q=80" alt="Salmón">
+                        <img src="img/Pinchos/Chorizo.JPG" alt="Pincho de Chorizo">
                     </div>
                     <div class="menu-item-content">
-                        <h3>Salmón a la Parrilla</h3>
-                        <p>Salmón fresco con hierbas y limón</p>
-                        <span class="price">$20.000</span>
+                        <h3>Pincho de Chorizo</h3>
+                        <p>Chorizo parrillero ahumado con vegetales grillados.</p>
+                        <span class="price">Bs. 10</span>
                     </div>
                 </div>
 
-                <div class="menu-item" data-category="pescados">
+                <div class="menu-item" data-category="pinchos">
                     <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1544943910-04c54e7b47e2?w=400&q=80" alt="Atún">
+                        <img src="img/Pinchos/Jiba%20Especial.JPG" alt="Jiba Especial">
                     </div>
                     <div class="menu-item-content">
-                        <h3>Atún Sellado</h3>
-                        <p>Atún fresco sellado con vegetales salteados</p>
-                        <span class="price">$19.000</span>
+                        <h3>Jiba Especial</h3>
+                        <p>Brocheta generosa de res marinada con vegetales frescos.</p>
+                        <span class="price">Bs. 20</span>
                     </div>
                 </div>
 
-                <!-- Ensaladas -->
-                <div class="menu-item" data-category="ensaladas">
+                <div class="menu-item" data-category="pinchos">
                     <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80" alt="Ensalada">
+                        <img src="img/Pinchos/Jiba%20Simple.JPG" alt="Jiba Simple">
                     </div>
                     <div class="menu-item-content">
-                        <h3>Ensalada César</h3>
-                        <p>Lechuga fresca, pollo, crutones y aderezo césar</p>
-                        <span class="price">$12.000</span>
+                        <h3>Jiba Simple</h3>
+                        <p>Pincho clásico de res con sazón tradicional y salsas.</p>
+                        <span class="price">Bs. 13</span>
                     </div>
                 </div>
 
-                <div class="menu-item" data-category="ensaladas">
+                <div class="menu-item" data-category="pinchos">
                     <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&q=80" alt="Ensalada Mediterránea">
+                        <img src="img/Pinchos/Pechuguitas.JPG" alt="Pechuguitas">
                     </div>
                     <div class="menu-item-content">
-                        <h3>Ensalada Mediterránea</h3>
-                        <p>Mezcla de vegetales frescos con aceite de oliva</p>
-                        <span class="price">$11.000</span>
+                        <h3>Pechuguitas</h3>
+                        <p>Bocados de pechuga de pollo marinada y parrillada.</p>
+                        <span class="price">Bs. 13</span>
                     </div>
                 </div>
 
                 <!-- Bebidas -->
                 <div class="menu-item" data-category="bebidas">
                     <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400&q=80" alt="Jugo Natural">
+                        <img src="img/Bebidas/Limo%20-%20Tostada.JPG" alt="Limonada Tostada">
                     </div>
                     <div class="menu-item-content">
-                        <h3>Jugos Naturales</h3>
-                        <p>Variedad de jugos frescos de frutas</p>
-                        <span class="price">$5.000</span>
+                        <h3>Limonada Tostada</h3>
+                        <p>Limonada artesanal con toque ahumado y frutos tropicales.</p>
+                        <span class="price">Bs. 25</span>
                     </div>
                 </div>
 
-                <div class="menu-item" data-category="bebidas">
+                <!-- Guarniciones -->
+                <div class="menu-item" data-category="guarniciones">
                     <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&q=80" alt="Cerveza">
+                        <img src="img/Guarniciones/Arroz-Yuca-Salsas.JPG" alt="Arroz Yuca y Salsas">
                     </div>
                     <div class="menu-item-content">
-                        <h3>Cerveza Artesanal</h3>
-                        <p>Selección de cervezas artesanales locales</p>
-                        <span class="price">$8.000</span>
+                        <h3>Arroz + Yuca + Salsas</h3>
+                        <p>Guarnición perfecta con arroz criollo, yuca frita y salsas.</p>
+                        <span class="price">Bs. 32</span>
                     </div>
                 </div>
 
-                <!-- Postres -->
-                <div class="menu-item" data-category="postres">
+                <!-- Promociones -->
+                <div class="menu-item" data-category="promociones">
                     <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400&q=80" alt="Tiramisú">
+                        <img src="img/Promociones/Alitasos.JPG" alt="Promoción Alitasos">
                     </div>
                     <div class="menu-item-content">
-                        <h3>Tiramisú</h3>
-                        <p>Postre italiano tradicional con café y cacao</p>
-                        <span class="price">$9.000</span>
+                        <h3>Promo Alitasos</h3>
+                        <p>Combo especial de alitas + yucas + bebida para compartir.</p>
+                        <span class="price">Bs. 26</span>
                     </div>
                 </div>
 
-                <div class="menu-item" data-category="postres">
+                <div class="menu-item" data-category="promociones">
                     <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&q=80" alt="Brownie">
+                        <img src="img/Promociones/Party%20pinchos.JPG" alt="Party Pinchos">
                     </div>
                     <div class="menu-item-content">
-                        <h3>Brownie con Helado</h3>
-                        <p>Brownie casero con helado de vainilla</p>
-                        <span class="price">$8.000</span>
+                        <h3>Party Pinchos</h3>
+                        <p>Bandeja familiar con pinchos surtidos y guarniciones.</p>
+                        <span class="price">Bs. 89</span>
                     </div>
                 </div>
             </div>
@@ -267,6 +269,15 @@
             </div>
         </div>
     </section>
+
+    <!-- Modal para imágenes -->
+    <div id="image-modal" class="image-modal" aria-hidden="true">
+        <div class="image-modal-content">
+            <button class="image-modal-close" aria-label="Cerrar imagen">&times;</button>
+            <img src="" alt="Detalle del producto" class="image-modal-img">
+            <p class="image-modal-caption"></p>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">

@@ -1,41 +1,39 @@
 // Carrusel de imágenes
-let currentSlide = 0;
+let currentSlideIndex = 0;
 const slides = document.querySelectorAll('.carousel-slide');
 const indicators = document.querySelectorAll('.indicator');
 const totalSlides = slides.length;
 
 // Función para cambiar de slide
 function changeSlide(direction) {
-    slides[currentSlide].classList.remove('active');
-    indicators[currentSlide].classList.remove('active');
-    
-    currentSlide += direction;
-    
-    if (currentSlide < 0) {
-        currentSlide = totalSlides - 1;
-    } else if (currentSlide >= totalSlides) {
-        currentSlide = 0;
-    }
-    
-    slides[currentSlide].classList.add('active');
-    indicators[currentSlide].classList.add('active');
+    if (!totalSlides) return;
+
+    slides[currentSlideIndex].classList.remove('active');
+    indicators[currentSlideIndex].classList.remove('active');
+
+    currentSlideIndex = (currentSlideIndex + direction + totalSlides) % totalSlides;
+
+    slides[currentSlideIndex].classList.add('active');
+    indicators[currentSlideIndex].classList.add('active');
 }
 
 // Función para ir a un slide específico
-function currentSlide(index) {
-    slides[currentSlide].classList.remove('active');
-    indicators[currentSlide].classList.remove('active');
-    
-    currentSlide = index - 1;
-    
-    slides[currentSlide].classList.add('active');
-    indicators[currentSlide].classList.add('active');
+function goToSlide(index) {
+    if (!totalSlides) return;
+
+    slides[currentSlideIndex].classList.remove('active');
+    indicators[currentSlideIndex].classList.remove('active');
+
+    currentSlideIndex = (index - 1 + totalSlides) % totalSlides;
+
+    slides[currentSlideIndex].classList.add('active');
+    indicators[currentSlideIndex].classList.add('active');
 }
 
 // Auto-play del carrusel
 let carouselInterval = setInterval(() => {
     changeSlide(1);
-}, 5000); // Cambia cada 5 segundos
+}, 6000); // Cambia cada 6 segundos
 
 // Pausar el carrusel al pasar el mouse
 const carouselContainer = document.querySelector('.carousel-container');
@@ -47,7 +45,7 @@ if (carouselContainer) {
     carouselContainer.addEventListener('mouseleave', () => {
         carouselInterval = setInterval(() => {
             changeSlide(1);
-        }, 5000);
+        }, 6000);
     });
 }
 
@@ -163,5 +161,67 @@ document.querySelectorAll('.menu-item').forEach(item => {
     item.style.transform = 'translateY(20px)';
     item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(item);
+});
+
+// Modal para ampliar imágenes
+const imageModal = document.getElementById('image-modal');
+const imageModalImg = imageModal?.querySelector('.image-modal-img');
+const imageModalCaption = imageModal?.querySelector('.image-modal-caption');
+const imageModalClose = imageModal?.querySelector('.image-modal-close');
+
+function openImageModal(src, caption) {
+    if (!imageModal || !imageModalImg || !imageModalCaption) return;
+    imageModalImg.src = src;
+    imageModalImg.alt = caption;
+    imageModalCaption.textContent = caption;
+    imageModal.classList.add('open');
+    imageModal.setAttribute('aria-hidden', 'false');
+}
+
+function closeImageModal() {
+    if (!imageModal || !imageModalImg) return;
+    imageModal.classList.remove('open');
+    imageModal.setAttribute('aria-hidden', 'true');
+    imageModalImg.src = '';
+}
+
+document.querySelectorAll('.menu-item-image').forEach(container => {
+    const img = container.querySelector('img');
+    if (!img) return;
+
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', () => {
+        const src = img.getAttribute('src');
+        const caption = img.closest('.menu-item')?.querySelector('h3')?.textContent || img.alt;
+        openImageModal(src, caption);
+    });
+
+    if (!container.querySelector('.image-zoom-btn')) {
+        const zoomBtn = document.createElement('button');
+        zoomBtn.className = 'image-zoom-btn';
+        zoomBtn.type = 'button';
+        zoomBtn.innerHTML = '<span>🔍</span> Ver';
+        zoomBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const src = img.getAttribute('src');
+            const caption = img.closest('.menu-item')?.querySelector('h3')?.textContent || img.alt;
+            openImageModal(src, caption);
+        });
+        container.appendChild(zoomBtn);
+    }
+});
+
+imageModalClose?.addEventListener('click', closeImageModal);
+
+imageModal?.addEventListener('click', (e) => {
+    if (e.target === imageModal) {
+        closeImageModal();
+    }
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && imageModal?.classList.contains('open')) {
+        closeImageModal();
+    }
 });
 
